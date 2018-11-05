@@ -1,6 +1,6 @@
 # Differentially Private GAN
 
-<img src="example_worst.png" width="250px"><img src="example_moderate.png" width="250px"><img src="example_best.png" width="250px">
+<img src="images/example_worst.png" width="270px"><img src="images/example_moderate.png" width="270px"><img src="images/example_best.png" width="270px">
 
 MNIST images generated for varying levels of noise.
 
