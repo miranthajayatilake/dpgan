@@ -6,15 +6,16 @@ MNIST images generated for varying levels of noise.
 
 ## Getting Started
 
-If you're using conda, you can replicate the necessary environment via the following command.
+If you're using conda, you can create and activate the required environment via the following commands.
 
 ```
 conda env create -f environment.yml
+source activate dpgan
 ```
 
-Otherwise, install Python (this repository uses version 3.6.7) and install the required dependencies via the following pip command.
+## Running
 
 ```
-pip install -r requirements.txt
+python dpgan/dpgan.py
 ```
 
