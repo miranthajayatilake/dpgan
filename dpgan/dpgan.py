@@ -21,15 +21,10 @@ NoisyAdam = add_gradient_noise(Adam)
 
 K.set_image_dim_ordering('th')
 
-# Deterministic output.
-# Tired of seeing the same results every time? Remove the line below.
-np.random.seed(1000)
+np.random.seed(0) # Deterministic output.
+random_dim = 100 # For consistency with other GAN implementations.
 
-# The results are a little better when the dimensionality of the random vector is only 10.
-# The dimensionality has been left at 100 for consistency with other GAN implementations.
-random_dim = 100
-
-# Load MNIST data
+# Load data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 X_train = (X_train.astype(np.float32) - 127.5) / 127.5
 X_train = X_train.reshape(60000, 784)
@@ -75,6 +70,7 @@ gan = Model(inputs=gan_input, outputs=gan_output)
 gan_optimizer = Adam(lr=0.0002, beta_1=0.5)
 gan.compile(optimizer=gan_optimizer, loss='binary_crossentropy')
 
+# Losses for plotting
 discriminator_losses = []
 generator_losses = []
 
