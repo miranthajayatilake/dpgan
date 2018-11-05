@@ -1,4 +1,4 @@
-# Differentially Private GAN
+# Differentially Private GANs
 
 <img src="images/example_worst.png" width="285px"><img src="images/example_moderate.png" width="285px"><img src="images/example_best.png" width="285px">
 
