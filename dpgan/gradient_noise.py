@@ -20,22 +20,21 @@ def add_gradient_noise(BaseOptimizer):
         )
 
     class NoisyOptimizer(BaseOptimizer):
-        def __init__(self, noise=0.3, **kwargs):
+        def __init__(self, standard_deviation=0.3, **kwargs):
             super(NoisyOptimizer, self).__init__(**kwargs)
             with K.name_scope(self.__class__.__name__):
-                self.noise = K.variable(noise, name='noise')
+                self.standard_deviation = K.variable(standard_deviation, name='standard_deviation')
 
         def get_gradients(self, loss, params):
             grads = super(NoisyOptimizer, self).get_gradients(loss, params)
 
             t = K.cast(self.iterations, K.dtype(grads[0]))
-            variance = self.noise
 
             grads = [
                 grad + K.random_normal(
                     _get_shape(grad),
                     mean=0.0,
-                    stddev=K.sqrt(variance),
+                    stddev=K.sqrt(self.standard_deviation),
                     dtype=K.dtype(grads[0])
                 )
                 for grad in grads
@@ -44,7 +43,7 @@ def add_gradient_noise(BaseOptimizer):
             return grads
 
         def get_config(self):
-            config = {'noise': float(K.get_value(self.noise))}
+            config = {'standard_deviation': float(K.get_value(self.standard_deviation))}
             base_config = super(NoisyOptimizer, self).get_config()
             return dict(list(base_config.items()) + list(config.items()))
 

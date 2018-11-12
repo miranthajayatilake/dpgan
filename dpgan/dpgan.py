@@ -56,8 +56,8 @@ discriminator.add(Dropout(0.3))
 discriminator.add(Dense(1, activation='sigmoid'))
 
 clipnorm = 5.0
-noise = 0.0001
-discriminator_optimizer = NoisyAdam(lr=0.0002, beta_1=0.5, clipnorm=clipnorm, noise=noise)
+standard_deviation = 0.0001
+discriminator_optimizer = NoisyAdam(lr=0.0002, beta_1=0.5, clipnorm=clipnorm, standard_deviation=standard_deviation)
 discriminator.compile(optimizer=discriminator_optimizer, loss='binary_crossentropy')
 
 # GAN
