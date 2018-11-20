@@ -34,7 +34,7 @@ def add_gradient_noise(BaseOptimizer):
                 grad + K.random_normal(
                     _get_shape(grad),
                     mean=0.0,
-                    stddev=K.sqrt(self.standard_deviation),
+                    stddev=self.standard_deviation,
                     dtype=K.dtype(grads[0])
                 )
                 for grad in grads

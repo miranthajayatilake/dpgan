@@ -143,11 +143,9 @@ def train(epochs=1, batch_size=128):
     plot_loss(e)
 
 if __name__ == '__main__':
-    if not os.path.exists('images'):
-        os.makedirs('images')
-
-    if not os.path.exists('models'):
-        os.makedirs('models')
+    for path in ['images', 'models']:
+        if not os.path.exists(path):
+            os.makedirs(path)
 
     train(200, 128)
 
